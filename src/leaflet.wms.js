@@ -403,6 +403,11 @@ wms.Overlay = L.Layer.extend({
             if (this.options.isBack === false) {
                 overlay.bringToFront();
             }
+            
+            if (this.options.pane) {
+                const targetpane = this._map.getPane(this.options.pane);
+                targetpane.appendChild(overlay._image);
+            }
         }
         if ((this._map.getZoom() < this.options.minZoom) ||
             (this._map.getZoom() > this.options.maxZoom)){
